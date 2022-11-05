@@ -1,0 +1,2 @@
+class CampTool < ApplicationRecord
+end
