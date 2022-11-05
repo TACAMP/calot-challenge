@@ -1,0 +1,2 @@
+class CampToolsController < ApplicationController
+end

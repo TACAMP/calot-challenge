@@ -1,0 +1,2 @@
+module CampToolsHelper
+end
