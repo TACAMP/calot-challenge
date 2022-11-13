@@ -4,7 +4,15 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_one_attached :profile_image
+  has_one_attached :user_image
+
+  has_many :posts , dependent: :destroy
+  has_many :favorites , dependent: :destroy
+
+  has_many :relationships , class_name: "Relationship" , foreign_key: "follower_id" , dependent: :destroy
+  has_many :reserve_of_relationships , class_name: "Relationship" , foreign_key: "followed_id" , dependent: :destroy
+  has_many :followings , through: :relationships , source: :followed
+  has_many :followers , through: :reserve_of_relationships , source: :follower
 
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|

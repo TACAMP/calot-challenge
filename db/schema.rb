@@ -69,8 +69,8 @@ ActiveRecord::Schema.define(version: 2022_11_06_025011) do
 
   create_table "posts", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "title", null: false
-    t.text "description", null: false
+    t.string "title", null: false
+    t.text "description"
     t.string "campsite_name"
     t.text "campsite_address"
     t.datetime "created_at", precision: 6, null: false

@@ -59,4 +59,6 @@ gem 'devise'
 
 gem 'net-smtp'
 
+gem 'pry-rails'
+
 

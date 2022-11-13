@@ -8,7 +8,15 @@ Rails.application.routes.draw do
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root "posts#index"
-  resources :posts
+
+  resources :users do
+    member do
+      get :favorites
+    end
+  end
+  resources :posts do
+    resource :favorites , only:[:create,:destroy]
+  end
   resources :post_tags
   resources :tags
   resources :camp_tools

@@ -1,0 +1,25 @@
+<%= form_with model: post , local:true do |f| %>
+  <div class="form-group">
+      <%= f.label :写真 %>
+      <%= f.file_field :post_image , class: "form-control-file", accept: 'image/*' %>
+  </div>
+  <div class="form-group">
+      <%= f.label :タイトル %>
+      <%= f.text_field :title , class: 'form-control' %>
+  </div>
+  <div class="form-group">
+      <%= f.label :説明文 %>
+      <%= f.text_area :description , class: 'form-control' %>
+  </div>
+  <div class="form-group">
+      <%= f.label :キャンプ場名 %>
+      <%= f.text_field :campsite_name , class: 'form-control' %>
+  </div>
+  <div class="form-group">
+      <%= f.label :住所 %>
+      <%= f.text_field :campsite_address , class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.submit '新規投稿' ,class: 'btn btn-success' %>
+  </div>
+<% end %>
