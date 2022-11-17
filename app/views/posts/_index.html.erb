@@ -1,31 +1,22 @@
-<div class="post">
-  <% post.each do |post| %>
-    <div class="user">
-      <span>
-        <% if post.user.user_image.attached? %>
-          <%= image_tag post.user.user_image , size: "50x50" %>
-        <% else %>
-          <%= image_tag 'no_image_square' , size: "50x50" %>
-        <% end %>
-      </span>
-      <span><%= post.user.name %></span>
-    </div>
+  <%= link_to post_path(post.id) do %>
     <div class="post_image d-inline-block">
-    　<% if post.post_image.attached? %>
+      <% if post.post_image.attached? %>
         <%= image_tag post.post_image , size: "480x270" %>
       <% else %>
         <%= image_tag 'no_image_yoko' , size: "480x270" %>
       <% end %>
+  <% end %>
     </div>
     <div class="post_detail d-inline-block">
       <div class="favorite_btn_<%= post.id %>">
-        <%= render 'favorites/favorite-btn' , post: post %>
+        <%= render 'favorites/favorite_btn' , post: post %>
       </div>
+        <%= link_to post_path(post.id) do %>
       <li>Title: <%= post.title %></li>
+        <% end %>
       <li>Description: <%= post.description %></li>
       <li>Campsite name: <%= post.campsite_name %></li>
       <li>Campsite address: <%= post.campsite_address %></li>
       <li>Datetime: <%= l post.created_at %></li>
     </div>
-  <% end %>
-</div>
+

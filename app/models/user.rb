@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   has_many :posts , dependent: :destroy
   has_many :favorites , dependent: :destroy
+  has_many :comments , dependent: :destroy
 
   has_many :relationships , class_name: "Relationship" , foreign_key: "follower_id" , dependent: :destroy
   has_many :reserve_of_relationships , class_name: "Relationship" , foreign_key: "followed_id" , dependent: :destroy
@@ -19,6 +20,18 @@ class User < ApplicationRecord
       user.name = "ゲスト"
       user.password = SecureRandom.urlsafe_base64
     end
+  end
+
+  def follow(user_id)
+    relationships.create(followed_id: user_id)
+  end
+
+  def unfollow(user_id)
+    relationships.find_by(followed_id: user_id).destroy
+  end
+
+  def following?(user)
+    followings.include?(user)
   end
 
 end

@@ -19,7 +19,7 @@ class UsersController < ApplicationController
       render 'users/edit'
     end
   end
-  
+
   #favorite一覧用メソッド
   def favorites
     favorites=Favorite.where(user_id: @user.id).pluck(:post_id)

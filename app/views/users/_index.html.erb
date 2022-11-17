@@ -1,15 +1,14 @@
-<% post.each do |post| %>
-  <div class="post_image d-inline-block">
-  　<% if post.post_image.attached? %>
-      <%= image_tag post.post_image , size: "480x270" %>
+<div class="user_index">
+  <%= link_to user_path(user.id) do %>
+    <% if user.user_image.attached? %>
+      <%= image_tag user.user_image , size: "100x100" %>
     <% else %>
-      <%= image_tag 'no_image_yoko' , size: "480x270" %>
+      <%= image_tag 'no_image_square' , size: "100x100" %>
     <% end %>
+    <%= user.name %>
+  <% end %>
+  <%= user.introduction %>
+  <div class= "follow_btn_<%= user.id %>">
+    <%= render 'relationships/follow_btn' , obj: user %>
   </div>
-  <div class="post_detail d-inline-block">
-    <li>Title: <%= post.title %></li>
-    <li>Campsite name: <%= post.campsite_name %></li>
-    <li>Campsite address: <%= post.campsite_address %></li>
-    <li>Datetime: <%= l post.created_at %></li>
-  </div>
-<% end %>
+</div>

@@ -1,3 +1,13 @@
-<%= render 'users/user' , user: @user %>
-<%=link_to 'プロフィールを編集' , edit_user_path %>
-<%= render 'users/index' , post: @post %>
+<span>
+  <%= render 'users/index' , user: @user_post %>
+  <%= render 'relationships/follow_number' , user: @user_post %>
+</span>
+<span>
+  <%= link_to 'プロフィールを編集' , edit_user_path %>
+</span>
+<span>
+  <%= link_to  "いいねした投稿一覧" , favorites_user_path %>
+</span>
+<% @post.each do |post| %>
+  <%= render 'posts/index' , post: post %>
+<% end %>

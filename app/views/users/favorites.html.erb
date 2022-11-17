@@ -1,3 +1,5 @@
 <h1>いいね一覧</h1>
-
-<%= render 'users/index' , post: @favorite_posts  %>
+<% @favorite_posts.each do |favorite_posts| %>
+  <%= render 'users/index' , user: favorite_posts.user %>
+  <%= render 'posts/index' , post: favorite_posts %>
+<% end %>

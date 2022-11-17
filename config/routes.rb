@@ -9,19 +9,22 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root "posts#index"
 
-  resources :users do
+  resources :users , only:[:show,:edit,:update] do
+    resource :relationships , only:[:create,:destroy] do
+    get 'followings' => 'relationships#followings' , as: 'followings'
+    get 'followers' => 'relationships#followers' , as: 'followers'
+    end
     member do
       get :favorites
     end
   end
   resources :posts do
     resource :favorites , only:[:create,:destroy]
+    resources :comments , only:[:create,:destroy]
   end
   resources :post_tags
   resources :tags
   resources :camp_tools
   #中間テーブル
   resources :relationships
-  resources :favorites
-  resources :comments
 end
