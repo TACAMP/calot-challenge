@@ -1,17 +1,14 @@
 <div class="container">
     <div class="row px-5">
         <div class="posts">
-            <div class="tags">
-                <i class="fas fa-tag"></i>
-                <% @tag_list.each do |tag| %>
-                    <%=render 'posts/tag_lists' , tag: tag %>
-                    <%=render 'posts/tag_counts' , tag: tag %>
-                <% end %>
-            </div>
             <% @posts.each do |post| %>
                 <%= render 'users/index' , user: post.user %>
                 <%= render 'posts/index' , post: post %>
-                <%= render 'posts/post_tags' , post: post %>
+                <i class="fas fa-tag"></i>
+                <% post.tags.each do |tag| %>
+                    <%= render 'posts/tag_lists' , tag: tag %>
+                    <%= render 'posts/tag_counts' , tag: tag %>
+                <% end %>
             <% end %>
         </div>
     </div>

@@ -1,1 +1,8 @@
 <h1>フォロワー一覧</h1>
+<% if @users.count == 0 %>
+  フォロワーはいません。<br>
+<% else %>
+  <% @users.each do |user| %>
+    <%= render 'users/index' , user: user %>
+  <% end %>
+<% end %>

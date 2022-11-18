@@ -6,11 +6,11 @@
 <div class="comment_index">
   <%= render 'comments/index' , post: @post %>
 </div>
+<% @post_tags.each do |tag| %>
+  <i class="fas fa-tag"></i><%=render 'posts/tag_lists' , tag: tag %>
+<% end %>
 <div class="comment_form">
   <%= render 'comments/form' , post: @post , comment: @comment %>
 </div>
-<% @post_tags.each do |tag| %>
-  <%=render 'posts/tag_lists' , tag: tag %>
-<% end %>
 <%= link_to '編集する' , edit_post_path(@post) %>
 <%= link_to '削除する' , post_path(@post) , method: :delete %>

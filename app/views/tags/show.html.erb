@@ -2,6 +2,4 @@
   <% @post.each do |post| %>
     <%= render 'users/index' , user: post.user %>
     <%= render 'posts/index' , post: post %>
-    <% if post.current_user == post.user.id %>
-      <%= link_to 
   <% end %>

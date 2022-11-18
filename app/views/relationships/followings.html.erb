@@ -1,2 +1,8 @@
 <h1>フォロー一覧</h1>
-<%= render 'users/index' , 
+<% if @users.count == 0 %>
+  フォローしている人はいません。
+<% else %>
+  <% @users.each do |user| %>
+    <%= render 'users/index' , user: user %>
+  <% end %>
+<% end %>

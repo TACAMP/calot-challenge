@@ -29,12 +29,16 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    @tag_list = @post.tags.pluck(:name).join(' ')
   end
 
   def update
     @post = Post.find(params[:id])
+    @post.user_id = current_user.id
+    tag_list = params[:post][:name].split(/[[:blank:]]+/)
     if @post.update(post_params)
-      redirect_to post_path(@post)
+       @post.save_tag(tag_list)
+      redirect_to post_path(@post) , notice: '投稿の編集に成功しました。'
     else
       render 'edit'
     end

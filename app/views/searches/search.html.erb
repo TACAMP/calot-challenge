@@ -1,0 +1,14 @@
+<h1>検索結果</h1>
+<% if @range == 'User' %>
+  <% @users.each do |user| %>
+      <%= render 'users/index' , user: user %>
+  <% end %>
+<% elsif @range == 'Post' %>
+  <% @posts.each do |post| %>
+    <%= render 'posts/index' , post: post %>
+  <% end %>
+<% elsif @range == 'Tag' %>
+  <% @tags.each do |tag| %>
+    <%= render 'posts/post_tags' , tag: tag %>
+  <% end %>
+<% end %>

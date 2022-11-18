@@ -1,1 +1,4 @@
-<i class="fas fa-tag"></i><%= post.tags.map(&:name).join(',') %>
+<i class="fas fa-tag"></i>
+<%= link_to tag_path(tag) do %>
+  <%= tag.name %>
+<% end %>
