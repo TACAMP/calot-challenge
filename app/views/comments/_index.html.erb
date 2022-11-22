@@ -5,6 +5,6 @@
   <%= comment.comment %>
   <%= l comment.created_at %>
   <% if current_user.id == comment.user.id %>
-    <%= link_to '削除する' , post_comment_path(post,comment) , remote: true , method: :delete %>
+    <%= link_to '削除する' , post_comment_path(post,comment) , remote: true , method: :delete %><br>
   <% end %>
 <% end %>

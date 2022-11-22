@@ -1,5 +1,13 @@
-<h1>タグ名:<%= @tag.name %></h1>
+<div class="container px-5 mt-5 mb-5">
+  <div class="row h1 justify-content-center">
+    タグ名:"<%= @tag.name %>"
+  </div>
   <% @post.each do |post| %>
+  <div class="row user_index border">
     <%= render 'users/index' , user: post.user %>
+  </div>
+  <div class="row post_index border">
     <%= render 'posts/index' , post: post %>
+  </div>
   <% end %>
+</div>

@@ -61,4 +61,7 @@ gem 'net-smtp'
 
 gem 'pry-rails'
 
+gem 'cocoon'
+
+gem 'jquery-rails'
 

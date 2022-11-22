@@ -42,8 +42,10 @@ ActiveRecord::Schema.define(version: 2022_11_06_025011) do
 
   create_table "camp_tools", force: :cascade do |t|
     t.string "tool_name", null: false
+    t.integer "post_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_camp_tools_on_post_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -113,6 +115,7 @@ ActiveRecord::Schema.define(version: 2022_11_06_025011) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "camp_tools", "posts"
   add_foreign_key "post_tags", "posts"
   add_foreign_key "post_tags", "tags"
 end

@@ -1,15 +1,13 @@
-<div class="container">
-    <div class="row px-5">
-        <div class="posts">
-            <% @posts.each do |post| %>
+<% @posts.each do |post| %>
+    <div class="container px-5">
+        <div class="shadow-lg m-5">
+            <div class="row user_index border">
                 <%= render 'users/index' , user: post.user %>
+            </div>
+            <div class="row post_index border">
                 <%= render 'posts/index' , post: post %>
-                <i class="fas fa-tag"></i>
-                <% post.tags.each do |tag| %>
-                    <%= render 'posts/tag_lists' , tag: tag %>
-                    <%= render 'posts/tag_counts' , tag: tag %>
-                <% end %>
-            <% end %>
+            </div>
         </div>
     </div>
-</div>
+<% end %>
+

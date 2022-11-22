@@ -1,7 +1,9 @@
   <% if current_user != obj %>
-    <% if current_user.following?(obj) %>
-      <%= link_to 'フォローを外す' , user_relationships_path(obj.id) , method: :delete , remote: true %>
-    <% else %>
-      <%= link_to 'フォローする' , user_relationships_path(obj.id) , method: :post , remote: true %>
-    <% end %>
+    <div class="btn btn-info shadow-sm">
+        <% if current_user.following?(obj) %>
+          <%= link_to 'フォローを外す' , user_relationships_path(obj.id) , method: :delete , remote: true , class: 'text-light text-decoration-none' %>
+        <% else %>
+          <%= link_to 'フォローする' , user_relationships_path(obj.id) , method: :post , remote: true , class: 'text-light text-decoration-none' %>
+        <% end %>
+    </div>
   <% end %>

@@ -1,13 +1,17 @@
-<span>
-  <%= render 'users/index' , user: @user_post %>
-  <%= render 'relationships/follow_number' , user: @user_post %>
-</span>
-<span>
-  <%= link_to 'プロフィールを編集' , edit_user_path %>
-</span>
-<span>
-  <%= link_to  "いいねした投稿一覧" , favorites_user_path %>
-</span>
-<% @post.each do |post| %>
-  <%= render 'posts/index' , post: post %>
-<% end %>
+<div class="container px-5">
+    <div class="row user_index border m-5">
+      <div class="col-8">
+        <%= render 'users/show' , user: @user_post %>
+      </div>
+      <div class="col-3">
+        <%= render 'relationships/follow_number' , user: @user_post %>
+        <%= link_to 'プロフィールを編集' , edit_user_path , class: 'btn btn-sm btn-success' %>
+        <%= link_to  "いいねした投稿一覧" , favorites_user_path , class: 'btn btn-sm btn-warning' %>
+      </div>
+    </div>
+    <% @post.each do |post| %>
+      <div class="row post_index border m-5">
+        <%= render 'posts/index' , post: post %>
+      </div>
+    <% end %>
+</div>

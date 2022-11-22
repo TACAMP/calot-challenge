@@ -25,7 +25,5 @@ Rails.application.routes.draw do
   resources :post_tags
   resources :tags
   resources :camp_tools
-  #中間テーブル
-  resources :relationships
   get 'search' => 'searches#search'
 end

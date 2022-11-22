@@ -1,7 +1,9 @@
 class PostsController < ApplicationController
+  
 
   def new
     @post = Post.new
+    @camp_tools = @post.camp_tools.build
   end
 
   def create
@@ -53,7 +55,8 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :description, :campsite_name, :campsite_address, :post_image)
+    params.require(:post).permit(:title, :description, :campsite_name, :campsite_address, :post_image,
+                                camp_tools_attributes:[:id, :post_id, :tool_name, :_destroy])
   end
 
 end
