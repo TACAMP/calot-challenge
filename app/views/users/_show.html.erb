@@ -3,7 +3,7 @@
     <% if user.user_image.attached? %>
       <%= image_tag user.user_image , size: "80x80" %>
     <% else %>
-      <%= image_tag 'no_image_square' , size: "80x80" %>
+      <%= image_tag 'no_image_square.jpg' , size: "80x80" %>
     <% end %>
     <%= user.name %>
   <% end %>
