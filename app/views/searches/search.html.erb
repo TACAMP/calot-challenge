@@ -2,24 +2,33 @@
   <div class="row h1 justify-content-center">
     "<%= "#{@word}" %>"の検索結果
   </div>
-  <% if @range == 'User' %>
-    <% @users.each do |user| %>
-        <div class="row user_index border m-5">
-          <%= render 'users/index' , user: user %>
+    <% if @range == 'User' %>
+      <% @users.each do |user| %>
+          <div class="row user_index border m-5">
+            <%= render 'users/index' , user: user %>
+          </div>
+        <% end %>
+        <div class="paginate d-flex justify-content-center">
+          <%= paginate @users %>
+        </div>
+    <% elsif @range == 'Post' %>
+      <% @posts.each do |post| %>
+        <div class="row post_index border m-5">
+          <%= render 'posts/index' , post: post %>
         </div>
       <% end %>
-<% elsif @range == 'Post' %>
-  <% @posts.each do |post| %>
-    <div class="row post_index border m-5">
-      <%= render 'posts/index' , post: post %>
-    </div>
-  <% end %>
-<% elsif @range == 'Tag' %>
-  <% @tags.each do |tag| %><br>
-    <div class="row m-5 h2">
-      <%= render 'posts/post_tags' , tag: tag %>
-      <%= render 'posts/tag_counts' , tag: tag %>
-    </div>
-  <% end %>
-<% end %>
+        <div class="paginate d-flex justify-content-center">
+          <%= paginate @posts %>
+        </div>
+    <% elsif @range == 'Tag' %>
+      <% @tags.each do |tag| %><br>
+        <div class="row m-1 h4">
+              <%= render 'posts/post_tags' , tag: tag %>
+              <%= render 'posts/tag_counts' , tag: tag %>
+        </div>
+      <% end %>
+        <div class="paginate d-flex justify-content-center">
+          <%= paginate @tags %>
+        </div>
+    <% end %>
 </div>

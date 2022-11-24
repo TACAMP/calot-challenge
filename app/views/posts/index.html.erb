@@ -1,13 +1,17 @@
-<% @posts.each do |post| %>
-    <div class="container px-5">
-        <div class="shadow-lg m-5">
-            <div class="row user_index border">
-                <%= render 'users/index' , user: post.user %>
-            </div>
-            <div class="row post_index border">
-                <%= render 'posts/index' , post: post %>
+<div class="container px-5">
+    <% @posts.each do |post| %>
+        <div class="container px-5">
+            <div class="shadow-lg m-5">
+                <div class="row user_index border">
+                    <%= render 'users/index' , user: post.user %>
+                </div>
+                <div class="row post_index border">
+                    <%= render 'posts/index' , post: post %>
+                </div>
             </div>
         </div>
+    <% end %>
+    <div class="paginate d-flex justify-content-center">
+    <%= paginate @posts %>
     </div>
-<% end %>
-
+</div>

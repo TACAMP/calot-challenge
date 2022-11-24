@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  
+
 
   def new
     @post = Post.new
@@ -19,7 +19,7 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    @posts = Post.all.page(params[:page]).per(5)
     @tag_list = Tag.all
   end
 

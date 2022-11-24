@@ -14,4 +14,7 @@
         <%= render 'posts/index' , post: post %>
       </div>
     <% end %>
+    <div class="paginate d-flex justify-content-center">
+      <%= paginate @post %>
+    </div>
 </div>

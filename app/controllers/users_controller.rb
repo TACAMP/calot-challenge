@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   def show
     @user=User.where(id: params[:id])
     @user_post=User.find(params[:id])
-    @post=@user_post.posts
+    @post=@user_post.posts.page(params[:page]).per(5)
   end
 
   def edit
