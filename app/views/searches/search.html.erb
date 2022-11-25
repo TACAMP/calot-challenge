@@ -3,29 +3,41 @@
     "<%= "#{@word}" %>"の検索結果
   </div>
     <% if @range == 'User' %>
-      <% @users.each do |user| %>
-          <div class="row user_index border m-5 shadow-lg">
-            <%= render 'users/index' , user: user %>
-          </div>
-        <% end %>
+      <% if @users.count == 0 %>
+        見つかりませんでした。
+      <% else %>
+          <% @users.each do |user| %>
+            <div class="row user_index border m-5 shadow-lg">
+              <%= render 'users/index' , user: user %>
+            </div>
+          <% end %>
+      <% end %>
         <div class="paginate d-flex justify-content-center">
           <%= paginate @users %>
         </div>
     <% elsif @range == 'Post' %>
-      <% @posts.each do |post| %>
-        <div class="row post_index border m-5 shadow-lg">
-          <%= render 'posts/index' , post: post %>
-        </div>
+      <% if @posts.count == 0 %>
+          見つかりませんでした。
+      <% else %>
+        <% @posts.each do |post| %>
+          <div class="row post_index border m-5 shadow-lg">
+            <%= render 'posts/index' , post: post %>
+          </div>
+        <% end %>
       <% end %>
         <div class="paginate d-flex justify-content-center">
           <%= paginate @posts %>
         </div>
     <% elsif @range == 'Tag' %>
-      <% @tags.each do |tag| %><br>
-        <div class="row m-1 h4">
-              <%= render 'posts/post_tags' , tag: tag %>
-              <%= render 'posts/tag_counts' , tag: tag %>
-        </div>
+      <% if @tags.count == 0 %>
+          見つかりませんでした。
+      <% else %>
+        <% @tags.each do |tag| %><br>
+          <div class="row m-1 h4">
+            <%= render 'posts/post_tags' , tag: tag %>
+            <%= render 'posts/tag_counts' , tag: tag %>
+          </div>
+        <% end %>
       <% end %>
         <div class="paginate d-flex justify-content-center">
           <%= paginate @tags %>

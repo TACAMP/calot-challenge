@@ -8,8 +8,8 @@
         <% end %>
       </div>
     <% end %>
-  </div>
-  <div class="pl-1">
+</div>
+<div class="pl-1">
       <div class="favorite_btn_<%= post.id %> d-inline-block">
         <%= render 'favorites/favorite_btn' , post: post %>
       </div>
@@ -18,17 +18,23 @@
           <%= render 'comments/count' , comment: post.comments %>
         <% end %>
       </div>
-      <div>
-        <li class="h5 mb-0">タイトル:
+    <div>
+      <li class="h3 mb-1">
         <%= link_to post_path(post.id) , class: 'text-light text-decoration-none' do %>
           <%= post.title %>
         <% end %>
-        </li>
-        <li>説明文: <%= post.description %></li>
-        <li>キャンプ場:<%= post.campsite_name %></li>
-        <% post.tags.each do |tag| %>
+      </li>
+      <li class='mb-1'><%= post.description %></li>
+      <li>
+        <i class="fas fa-tent"></i>
+        :<%= post.campsite_name %>
+      </li>
+      <% post.tags.each do |tag| %>
         <li><%= render 'posts/post_tags' , tag: tag %></li>
-        <% end %>
-        <li><%= l post.created_at %></li>
-      </div>
+      <% end %>
+      <li class="mt-2">
+        <i class="fas fa-calendar-days"></i>
+        <%= l post.created_at %>
+      </li>
+    </div>
 </div>

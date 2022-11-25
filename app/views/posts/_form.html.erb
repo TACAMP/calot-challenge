@@ -1,56 +1,60 @@
-<%= form_with model: post, local:true do |f| %>
-  <div class="form-group">
-    <%= f.label :写真 ,class: 'h5' %>
-    <%= f.file_field :post_image , class: "form-control-file", accept: 'image/*' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :タイトル ,class: 'h5' %>
-    <%= f.text_field :title , class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :説明文 ,class: 'h5' %>
-    <%= f.text_area :description , class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :キャンプ場名 ,class: 'h5' %>
-    <%= f.text_field :campsite_name , class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :住所 ,class: 'h5' %>
-    <%= f.text_field :campsite_address , class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :道具名 ,class: 'h5' %>
-    <div class="mx-auto">
-      <%= f.fields_for :camp_tools do |t| %>
-        <%= render 'posts/camp_tool_fields' , f: t %>
-      <% end %>
+<div class="col-9 mx-auto">
+  <%= form_with model: post, local:true do |f| %>
+    <div class="form-group">
+      <%= f.label :写真 ,class: 'h5' %>
+      <%= f.file_field :post_image , class: "form-control-file", accept: 'image/*' %>
     </div>
-
-    <div id="detail-association-insertion-point"></div>
-
-    <div class="col-10 mx-auto mt-2">
-      <%= link_to_add_association "+道具を追加", f, :camp_tools,
-      class: "btn btn-secondary btn-block" ,
-      data: {
-      association_insertion_node: "#detail-association-insertion-point" ,
-      association_insertion_method: "after"
-      } %>
+    <div class="form-group">
+      <%= f.label :タイトル ,class: 'h5' %>
+      <%= f.text_field :title , class: 'form-control' %>
     </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :タグ ,class: 'h5' %>
-    <P>スペースを入力することで複数のタグを付けることができます。</P>
-    <P>例:テント 初心者 冬キャン</P>
-    <%= f.text_field :name , value: @tag_list , class: 'form-control' %>
-  </div>
-  <% if controller.controller_name == 'posts' && controller.action_name == 'new' %>
-  <div class="form-group col-10 mx-auto mt-2">
-    <%= f.submit '新規投稿' ,class: 'btn btn-success btn-block' %>
-  </div>
-  <% else %>
-  <div class="form-group col-10 mx-auto mt-2">
-    <%= f.submit '編集内容を送信' ,class: 'btn btn-success btn-block'  %>
-  </div>
+    <div class="form-group">
+      <%= f.label :説明文 ,class: 'h5' %>
+      <%= f.text_area :description , class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :キャンプ場名 ,class: 'h5' %>
+      <%= f.text_field :campsite_name , class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :住所 ,class: 'h5' %>
+      <%= f.text_field :campsite_address , class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :道具名 ,class: 'h5' %>
+      <div class="mx-auto">
+        <%= f.fields_for :camp_tools do |t| %>
+          <%= render 'posts/camp_tool_fields' , f: t %>
+        <% end %>
+      </div>
+
+      <div class="detail-association-insertion-point"></div>
+
+      <div class="col-5 mx-auto mt-2 d-inline-block">
+        <%= link_to_add_association "+道具を追加", f, :camp_tools,
+        class: "btn btn-secondary btn-block" ,
+        data: {
+        association_insertion_node: ".detail-association-insertion-point" ,
+        association_insertion_method: "after"
+        } %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :タグ ,class: 'h5' %>
+      <P>
+        スペースを入力することで複数のタグを付けることができます。<br>
+        (例:テント 初心者 冬キャン)
+      </P>
+      <%= f.text_field :name , value: @tag_list , class: 'form-control' %>
+    </div>
+    <% if controller.controller_name == 'posts' && controller.action_name == 'new' %>
+      <div class="form-group col-7 mx-auto m-5">
+        <%= f.submit '新規投稿' ,class: 'btn btn-success btn-block' %>
+      </div>
+    <% else %>
+      <div class="form-group col-7 mx-auto m-5">
+        <%= f.submit '編集内容を送信' ,class: 'btn btn-success btn-block'  %>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
+</div>

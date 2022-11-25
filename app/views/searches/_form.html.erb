@@ -1,9 +1,7 @@
-<div class="">
-<%= form_with url: search_path ,method: :get , local: true do |f| %>
-  <%= f.select :range , options_for_select([["投稿","Post"],["タグ","Tag"],["ユーザー","User"]])%>
-  <%= f.text_field :word %>
-  <%= f.submit do %>
-   <i class="fas fa-search"></i>
+<div>
+  <%= form_with url: search_path ,method: :get , local: true do |f| %>
+    <%= f.select :range , options_for_select([["投稿","Post"],["タグ","Tag"],["ユーザー","User"]])%>
+    <%= f.text_field :word %>
+    <%= f.submit '検索' %>
   <% end %>
-<% end %>
 </div>
