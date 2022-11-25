@@ -5,14 +5,12 @@
     <% else %>
       <%= image_tag 'no_image_square' , size: "120x120" , class: 'p-1' %>
     <% end %>
-    <%= user.name %>
+    <%= user.name  %><br>
   <% end %>
+    <%= user.introduction %>
 </div>
 <div class="d-inline-block">
   <div class= "follow_btn_<%= user.id %> ml-2">
       <%= render 'relationships/follow_btn' , obj: user %>
   </div>
-</div>
-<div>
-  <%= user.introduction %>
 </div>
