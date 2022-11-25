@@ -1,5 +1,13 @@
-<h1>いいね一覧</h1>
-<% @favorite_posts.each do |favorite_posts| %>
-  <%= render 'users/index' , user: favorite_posts.user %>
-  <%= render 'posts/index' , post: favorite_posts %>
-<% end %>
+<div class="container px-5 mt-5 mb-5">
+  <div class="row h1 justify-content-center">
+    いいね一覧
+  </div>
+    <% @favorite_posts.each do |favorite_post| %>
+      <div class="row user_index border mt-5">
+        <%= render 'users/index' , user: favorite_post.user %>
+      </div>
+      <div class="row post_index border mb-5">
+        <%= render 'posts/index' , post: favorite_post %>
+      </div>
+    <% end %>
+</div>

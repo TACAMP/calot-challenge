@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :ensure_correct_user , only:([:edit,:update])
 
 
   def new
@@ -12,14 +13,14 @@ class PostsController < ApplicationController
     tag_list = params[:post][:name].split(/[[:blank:]]+/)
     if @post.save
       @post.save_tag(tag_list)
-      redirect_to root_path , notice: '投稿に成功しました。'
+      redirect_to root_path , success: "投稿に成功しました。"
     else
       render 'new'
     end
   end
 
   def index
-    @posts = Post.all.page(params[:page]).per(5)
+    @posts = Post.where(user_id: [current_user.id, *current_user.following_ids]).page(params[:page]).per(5)
     @tag_list = Tag.all
   end
 
@@ -40,7 +41,7 @@ class PostsController < ApplicationController
     tag_list = params[:post][:name].split(/[[:blank:]]+/)
     if @post.update(post_params)
        @post.save_tag(tag_list)
-      redirect_to post_path(@post) , notice: '投稿の編集に成功しました。'
+      redirect_to post_path(@post) , success: '投稿の編集に成功しました。'
     else
       render 'edit'
     end
@@ -49,7 +50,7 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to root_path , notice: '投稿を削除しました。'
+    redirect_to root_path , success: '投稿を削除しました。'
   end
 
   private
@@ -57,6 +58,14 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :description, :campsite_name, :campsite_address, :post_image,
                                 camp_tools_attributes:[:id, :post_id, :tool_name, :_destroy])
+  end
+
+  def ensure_correct_user
+    @post = Post.find(params[:id])
+    @user = @post.user
+    unless @user == current_user
+      redirect_to root_path
+    end
   end
 
 end

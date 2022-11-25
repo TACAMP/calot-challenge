@@ -10,6 +10,9 @@ class Post < ApplicationRecord
   has_many:camp_tools ,dependent: :destroy
   accepts_nested_attributes_for :camp_tools , allow_destroy: true
 
+  validates :title , presence: true
+  validates :description , length: {maximum: 500}
+
   #Favoriteモデルにuserが存在するか確認
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)

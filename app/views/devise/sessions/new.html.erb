@@ -1,40 +1,39 @@
-<div class="jumbotron" style="background: url(<%= asset_path "camp1.jpg" %>)center; background-size:cover;">
-  <div class="row p-5">
-    <div class="col-md-12">
-      <div class="container col-5 p-4 text-center" style="background-color:rgba(255,255,255,0.9);">
-        <h3 style="color:#000000;"><strong>
-          あなたの素敵なキャンプを<br />
-          キャンプを<br />
-          投稿しませんか？
-        </strong></h3>
+<div class='container px-5'>
+  <div class="row m-5">
+    <%= render 'devise/shared/error_messages' , resource: @user %>
+      <div class="col-7 jumbotron" style="background: url(<%= asset_path "camp1.jpg" %>)center; background-size:cover;">
+          <div class="p-4 text-center" style="background-color:#FAFAFA80;">
+            <h3 style="color:#000000;"><strong>
+              あなたの<br />
+              素敵なキャンプ<br />
+              投稿しませんか？
+            </strong></h3>
+          </div>
       </div>
-    </div>
-  </div>
-</div>
-<div class='container'>
-  <div class='row'>
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
-      <h2>ログイン</h2>
+      <div class='col-4'>
+        <div class="px-5 px-sm-0 border mb-2 p-2">
+          <div class="log_in h2 text-center">ログイン</div>
 
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <div class="field">
-            <%= f.label :メールアドレス %><br />
-            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-          </div>
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+              <div class="field m-2">
+                <%= f.label :メールアドレス %><br />
+                <%= f.email_field :email, autofocus: true, autocomplete: "email" , class: 'form-control' %>
+              </div>
 
-          <div class="field">
-            <%= f.label :パスワード %><br />
-            <%= f.password_field :password, autocomplete: "current-password" %>
-          </div>
+              <div class="field m-2">
+                <%= f.label :パスワード %><br />
+                <%= f.password_field :password, autocomplete: "current-password" , class: 'form-control'  %>
+              </div>
 
-          <div class="actions">
-            <%= f.submit "ログイン" %>
-          </div>
-        <% end %>
-
-        <%= link_to 'ゲストログイン', users_guest_sign_in_path , method: :post %>
-
-        アカウントをお持ちでないですか？<%= link_to '登録する' , new_user_registration_path %>
-    </div>
-  </div>
+              <div class="actions">
+                <%= f.submit "ログイン" , class: 'btn btn-primary d-flex mx-auto' %>
+              </div>
+            <% end %>
+            <%= link_to 'ゲストログイン', users_guest_sign_in_path , method: :post , class: 'mx-auto' %>
+        </div>
+        <div class="border p-2">
+            アカウントをお持ちでないですか？<br>
+            <%= link_to '登録する' , new_user_registration_path %>
+        </div>
+      </div>
 </div>

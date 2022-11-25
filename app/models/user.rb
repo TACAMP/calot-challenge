@@ -9,11 +9,12 @@ class User < ApplicationRecord
   has_many :posts , dependent: :destroy
   has_many :favorites , dependent: :destroy
   has_many :comments , dependent: :destroy
-
   has_many :relationships , class_name: "Relationship" , foreign_key: "follower_id" , dependent: :destroy
   has_many :reserve_of_relationships , class_name: "Relationship" , foreign_key: "followed_id" , dependent: :destroy
   has_many :followings , through: :relationships , source: :followed
   has_many :followers , through: :reserve_of_relationships , source: :follower
+
+  validates :name , length: {minimum: 2,maximum: 30} ,uniqueness: true
 
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|

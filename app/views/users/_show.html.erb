@@ -1,9 +1,9 @@
 <div class="col-md-8 p-0">
-  <%= link_to user_path(user.id) ,class: 'text-light text-decoration-none' do %>
+  <%= link_to user_path(user.name) ,class: 'text-light text-decoration-none font-weight-bold h5' do %>
     <% if user.user_image.attached? %>
-      <%= image_tag user.user_image , size: "80x80" %>
+      <%= image_tag user.user_image , size: "120x120" , class: 'p-1' %>
     <% else %>
-      <%= image_tag 'no_image_square' , size: "80x80" %>
+      <%= image_tag 'no_image_square' , size: "120x120" , class: 'p-1' %>
     <% end %>
     <%= user.name %>
   <% end %>

@@ -10,16 +10,16 @@
     <% end %>
   </div>
   <div class="pl-1">
-    <div class="post_detail d-inline-block">
-      <div class="favorite_btn_<%= post.id %>">
-        <span><%= render 'favorites/favorite_btn' , post: post %></span>
+      <div class="favorite_btn_<%= post.id %> d-inline-block">
+        <%= render 'favorites/favorite_btn' , post: post %>
       </div>
-      <div>
-        <%= link_to post_path(post) , class: 'text-dark' do %>
+      <div class="d-inline-block">
+        <%= link_to post_path(post) , class: 'text-dark text-decoration-none' do %>
           <%= render 'comments/count' , comment: post.comments %>
         <% end %>
       </div>
-        <li>タイトル:
+      <div>
+        <li class="h5 mb-0">タイトル:
         <%= link_to post_path(post.id) , class: 'text-light text-decoration-none' do %>
           <%= post.title %>
         <% end %>
@@ -30,5 +30,5 @@
         <li><%= render 'posts/post_tags' , tag: tag %></li>
         <% end %>
         <li><%= l post.created_at %></li>
-    </div>
+      </div>
 </div>
