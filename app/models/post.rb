@@ -34,11 +34,8 @@ class Post < ApplicationRecord
   end
 
   #検索分岐
-  def self.looks(searches, words)
-    if searches == "perfect_match"
-      @post = Post.where("title LIKE ?", "#{words}")
-    else
-      @post = Post.where("title LIKE ?", "%#{words}%")
-    end
+  def self.looks(words)
+    @post = Post.where("title LIKE ?", "%#{words}%")
   end
+
 end

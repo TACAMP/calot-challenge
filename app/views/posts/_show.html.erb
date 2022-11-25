@@ -21,9 +21,15 @@
         </li>
         <li>説明文: <%= post.description %></li>
         <li>キャンプ場名: <%= post.campsite_name %></li>
-        <li>住所: <%= post.campsite_address %></li>
-        道具:<% post.camp_tools.each do |tool| %>
-        <li><%= tool.tool_name %></li>
+        <li class="h5">
+          <i class="fas fa-map-pin"></i>
+          :<%= post.campsite_address %>
+        </li>
+        <li>
+          <i class="fas fa-hammer"></i>
+        <% post.camp_tools.each do |tool| %>
+          :<%= tool.tool_name %>
+        </li>
         <% end %>
         <li><%= l post.created_at %></li>
     </div>

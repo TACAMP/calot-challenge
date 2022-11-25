@@ -20,7 +20,7 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.where(user_id: [current_user.id, *current_user.following_ids]).page(params[:page]).per(5)
+    @posts = Post.where(user_id: [current_user.id, *current_user.following_ids]).page(params[:page]).per(5).order(created_at: :desc)
     @tag_list = Tag.all
   end
 
@@ -51,6 +51,10 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
     redirect_to root_path , success: '投稿を削除しました。'
+  end
+
+  def all_users_posts
+    @posts = Post.all.page(params[:page]).per(10).order(created_at: :desc)
   end
 
   private

@@ -26,4 +26,5 @@ Rails.application.routes.draw do
   resources :tags
   resources :camp_tools
   get 'search' => 'searches#search'
+  get 'all_users_posts' => 'posts#all_users_posts' , as: 'all_users_posts'
 end

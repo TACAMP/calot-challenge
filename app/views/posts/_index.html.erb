@@ -25,7 +25,7 @@
         <% end %>
         </li>
         <li>説明文: <%= post.description %></li>
-        <li>キャンプ場名: <%= post.campsite_name %></li>
+        <li>キャンプ場:<%= post.campsite_name %></li>
         <% post.tags.each do |tag| %>
         <li><%= render 'posts/post_tags' , tag: tag %></li>
         <% end %>
