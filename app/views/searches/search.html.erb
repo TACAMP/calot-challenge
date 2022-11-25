@@ -4,7 +4,7 @@
   </div>
     <% if @range == 'User' %>
       <% @users.each do |user| %>
-          <div class="row user_index border m-5">
+          <div class="row user_index border m-5 shadow-lg">
             <%= render 'users/index' , user: user %>
           </div>
         <% end %>
@@ -13,7 +13,7 @@
         </div>
     <% elsif @range == 'Post' %>
       <% @posts.each do |post| %>
-        <div class="row post_index border m-5">
+        <div class="row post_index border m-5 shadow-lg">
           <%= render 'posts/index' , post: post %>
         </div>
       <% end %>

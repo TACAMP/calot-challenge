@@ -3,10 +3,10 @@
     タグ名:"<%= @tag.name %>"
   </div>
   <% @post.each do |post| %>
-  <div class="row user_index border">
+  <div class="row user_index border shadow-lg">
     <%= render 'users/index' , user: post.user %>
   </div>
-  <div class="row post_index border">
+  <div class="row post_index border shadow-lg">
     <%= render 'posts/index' , post: post %>
   </div>
   <% end %>
