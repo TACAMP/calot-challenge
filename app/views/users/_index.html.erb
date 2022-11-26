@@ -1,5 +1,5 @@
 <div class="col-md-8 p-0">
-  <%= link_to user_path(user.name) ,class: 'text-light text-decoration-none font-weight-bold h5' do %>
+  <%= link_to user_path(user) ,class: 'text-white text-decoration-none font-weight-bold h5' do %>
     <% if user.user_image.attached? %>
       <%= image_tag user.user_image , size: "80x80" , class: 'user_index_image p-1' %>
     <% else %>

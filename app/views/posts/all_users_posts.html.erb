@@ -1,12 +1,14 @@
-<div class="container px-5">
+<div class="container p-5 ">
+    <div class="row h1 justify-content-center mt-5 mb-5 mx-auto">
+        <span class="marker">
+            全キャンパーの投稿一覧
+        </span>
+    </div>
     <% if @posts.count == 0 %>
         <div class="row-12 h1 text-center mt-5">
             投稿がありません。
         </div>
     <% else %>
-        <div class="row h1 justify-content-center mt-5 mb-5">
-        全キャンパーの投稿一覧
-      </div>
         <% @posts.each do |post| %>
             <div class="shadow-lg m-5">
                 <div class="row user_index border">

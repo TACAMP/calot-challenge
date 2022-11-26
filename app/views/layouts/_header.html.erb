@@ -1,7 +1,7 @@
 <header>
     <nav class="navbar navbar-light navbar-expand">
       <div class="container">
-        <a class="navbar-brand text-light" href="/">
+        <a class="navbar-brand text-white" href="/">
           <span class="mt-2 ml-2 h1 d-flex align-items-center title_name"><%= image_tag 'calot(logo1)' , size: '50x50' %>Calot</span>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,17 +10,17 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
               <li class="d-flex align-items-center">
-                <%= link_to new_post_path , class: 'nav-link text-light Calot mx-2' do %>
+                <%= link_to new_post_path , class: 'nav-link text-white Calot mx-2' do %>
                   <i class="fas fa-plus"></i>作成
                 <% end %>
               </li>
               <li class="d-flex align-items-center">
-                <%= link_to all_users_posts_path , class: 'nav-link text-light Calot mx-2' do %>
+                <%= link_to all_users_posts_path , class: 'nav-link text-white Calot mx-2' do %>
                   <i class="fas fa-clone"></i>全投稿一覧
                 <% end %>
               </li>
               <li class="d-flex align-items-center">
-                <%= link_to user_path(current_user.name) , class: 'nav-link text-light mx-2' do %>
+                <%= link_to user_path(current_user) , class: 'nav-link text-white mx-2' do %>
                   <% if current_user.user_image.attached? %>
                     <%= image_tag current_user.user_image , size: "30x30" , class: 'profile' %>
                   <% else %>
@@ -30,7 +30,7 @@
                 <% end %>
               </li>
               <li class="d-flex align-items-center">
-                <%= link_to destroy_user_session_path , method: :delete , class: 'nav-link text-light mx-2' do %>
+                <%= link_to destroy_user_session_path , method: :delete , class: 'nav-link text-white mx-2' do %>
                   <i class="fas fa-right-from-bracket"></i>ログアウト
                 <% end %>
               </li>

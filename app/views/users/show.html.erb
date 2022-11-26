@@ -1,12 +1,22 @@
-<div class="container px-5">
-    <div class="row user_index border m-5 shadow-lg">
-      <div class="col-7">
+<div class="container p-5">
+    <div class="row-12 user_index border mt-5 mb-5 shadow-lg">
+      <div class="col-7 d-inline-block mt-3">
         <%= render 'users/show' , user: @user_post %>
       </div>
-      <div class="col-5 pt-4">
+      <div class="col-4 px-auto d-inline-block mb-5 mt-0">
         <%= render 'relationships/follow_number' , user: @user_post %>
-        <div class='d-inline-block mt-3 mr-3'><%= link_to 'プロフィールを編集' , edit_user_path , class: 'btn btn-sm btn-success' %></div>
-        <div class='d-inline-block mt-3'><%= link_to  "いいねした投稿一覧" , favorites_user_path , class: 'btn btn-sm btn-warning' %></div>
+        <% if @user_post == current_user %>
+          <div class='d-inline-block mt-4 mr-3'>
+            <%= link_to edit_user_path , class: 'btn btn-sm btn-success' do %>
+              <i class="fas fa-user-pen"></i>プロフィールを編集
+            <% end %>
+          </div>
+        <% end %>
+        <div class='d-inline-block mt-4'>
+          <%= link_to favorites_user_path , class: 'btn btn-sm btn-warning' do %>
+            <i class="fas fa-heart-circle-check"></i>いいね一覧
+          <% end %>
+        </div>
       </div>
     </div>
     <% if @post.count == 0 %>

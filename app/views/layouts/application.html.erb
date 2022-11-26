@@ -15,7 +15,9 @@
       <%= render 'layouts/header' %>
     <% end %>
     <%= render 'devise/shared/flash_message' %>
-    <%= yield %>
+    <div class="contents">
+      <%= yield %>
+    </div>
     <% if user_signed_in? %>
       <%= render 'layouts/footer' %>
     <% end %>

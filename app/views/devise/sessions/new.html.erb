@@ -1,4 +1,7 @@
 <div class='container px-5'>
+  <div class=" row mt-2 ml-2 h1 d-flex align-items-center title_name text-white">
+    <%= image_tag 'calot(logo1)' , size: '50x50' %>Calot
+  </div>
   <div class="row m-5">
     <%= render 'devise/shared/error_messages' , resource: @user %>
       <div class="col-7 jumbotron" style="background: url(<%= asset_path "camp1.jpg" %>)center; background-size:cover;">
@@ -11,7 +14,7 @@
           </div>
       </div>
       <div class='col-4'>
-        <div class="px-5 px-sm-0 border mb-2 p-2">
+        <div class="px-5 px-sm-0 border border-dark mb-2 p-2">
           <div class="log_in h2 text-center">ログイン</div>
 
             <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -26,14 +29,14 @@
               </div>
 
               <div class="actions">
-                <%= f.submit "ログイン" , class: 'btn btn-primary d-flex mx-auto' %>
+                <%= f.submit "ログイン" , class: 'btn btn-primary d-flex mx-auto text-decoration-none' %>
               </div>
             <% end %>
-            <%= link_to 'ゲストログイン', users_guest_sign_in_path , method: :post , class: 'mx-auto' %>
+            <%= link_to 'ゲストログイン', users_guest_sign_in_path , method: :post , class: 'mx-auto text-decoration-none' %>
         </div>
-        <div class="border p-2">
+        <div class="border border-dark p-2">
             アカウントをお持ちでないですか？<br>
-            <%= link_to '登録する' , new_user_registration_path %>
+            <%= link_to '登録する' , new_user_registration_path ,class: 'text-decoration-none' %>
         </div>
       </div>
   </div>

@@ -1,6 +1,8 @@
-<div class="container px-5 mt-5 mb-5">
+<div class="container p-5">
   <div class="row h1 justify-content-center">
-    タグ名:"<%= @tag.name %>"
+    <span class="marker">
+      タグ名:"<%= @tag.name %>"
+    </span>
   </div>
   <% @post.each do |post| %>
     <div class="row user_index border shadow-lg mt-5">

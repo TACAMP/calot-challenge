@@ -4,18 +4,18 @@ class UsersController < ApplicationController
 
   def show
     @user=User.where(id: params[:id])
-    @user_post=User.find_by(name: params[:name])
+    @user_post=User.find(params[:id])
     @post=@user_post.posts.page(params[:page]).per(5).order(created_at: :desc)
   end
 
   def edit
-    @user=User.find_by(name: params[:name])
+    @user=User.find(params[:id])
   end
 
   def update
-    @user=User.find_by(name: params[:name])
+    @user=User.find(params[:id])
     if @user.update(user_params)
-      redirect_to user_path(@user.name) , success: 'ユーザー情報の編集に成功しました。'
+      redirect_to user_path(@user) , success: 'ユーザー情報の編集に成功しました。'
     else
       render :edit
     end
@@ -35,11 +35,11 @@ class UsersController < ApplicationController
 
   #favorite用のuserを探すメソッド
   def set_user
-    @user = User.find_by(name: params[:name])
+    @user = User.find(params[:id])
   end
 
   def ensure_correct_user
-    @user = User.find_by(name: params[:name])
+    @user = User.find(params[:id])
     unless @user == current_user
       redirect_to root_path
     end

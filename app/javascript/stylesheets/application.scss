@@ -10,25 +10,30 @@ body {
   padding: 0;
   height: 100%;
   font-family: "M PLUS Rounded 1c";
+  background-color: #d4dcd6;
 }
 
 header {
-  background-image: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);
+  /*background-image: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);*/
+  background-color: #badcad;
 }
 
 footer {
   position: sticky;
   top: 100vh;
   width: 100%;
+  background-color:#badcad;
 }
 
 .post_index{
-  background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+  /*background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);*/
+  background-color: #badcad;
   list-style-type: none;
 }
 
 .user_index{
-  background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+  /*background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);*/
+  background-color: #badcad;
 }
 
 /*ページネーション自体のデザイン*/
@@ -39,7 +44,7 @@ footer {
 
 /* 表示しているページ番号のデザイン */
 .pagination>.active>a {
-  background-image: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);     /*背景の色を変える*/
+  background: #eb9b6f;     /*背景の色を変える*/
   border-radius: 15px;     /*角を丸くする*/
 }
 
@@ -50,6 +55,7 @@ footer {
 
 .profile {
   border-radius: 15px;
+  border-color: black;
 }
 
 .user_index_image {
@@ -58,4 +64,12 @@ footer {
 
 .title_name {
   font-family: 'Zen Kurenaido', sans-serif;
+}
+
+.marker{
+	background:linear-gradient(transparent 60%, #eb9b6f 60%);
+}
+
+.follow{
+  background: #d2b48c;
 }

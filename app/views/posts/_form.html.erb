@@ -1,7 +1,9 @@
 <div class="col-9 mx-auto">
   <%= form_with model: post, local:true do |f| %>
     <div class="form-group">
-      <%= f.label :写真 ,class: 'h5' %>
+      <%= f.label :写真 ,class: 'h5' do %>
+        <i class="fa-solid fa-camera-retro"></i>写真
+      <% end %>
       <%= f.file_field :post_image , class: "form-control-file", accept: 'image/*' %>
     </div>
     <div class="form-group">
@@ -49,7 +51,7 @@
     </div>
     <% if controller.controller_name == 'posts' && controller.action_name == 'new' %>
       <div class="form-group col-7 mx-auto m-5">
-        <%= f.submit '新規投稿' ,class: 'btn btn-success btn-block' %>
+        <%= f.submit '新規投稿' , class: 'btn btn-success btn-block' %>
       </div>
     <% else %>
       <div class="form-group col-7 mx-auto m-5">
