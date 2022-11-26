@@ -1,24 +1,25 @@
 <div class="container px-5 mt-5 mb-5">
-  <div class="row h1 justify-content-center">
-    ユーザー情報を編集
-  </div>
-
-<%= form_with model: @user , local:true do |f| %>
-  <div class="form-group">
-      <%= f.label :写真 , class: 'h5' %>
-      <%= f.file_field :user_image , class: "form-control-file", accept: 'image/*' %>
-  </div>
-  <div class="form-group">
-      <%= f.label :ユーザーネーム , class: 'h5' %>
-      <%= f.text_field :name , class: 'form-control' %>
-  </div>
-  <div class="form-group">
-      <%= f.label :紹介文 , class: 'h5' %>
-      <%= f.text_area :introduction , class: 'form-control' %>
-  </div>
-  <div class="form-group col-10 mx-auto mt-2">
-    <%= f.submit '更新する' ,class: 'btn btn-success btn-block' %>
-  </div>
-<% end %>
-
+  <%= render 'devise/shared/error_messages' , resource: @user %>
+    <div class="row h1 justify-content-center">
+      ユーザー情報を編集
+    </div>
+    <div class="col-9 mx-auto">
+      <%= form_with model: @user,url: user_path(@user.name) , local:true do |f| %>
+        <div class="form-group">
+          <%= f.label :写真 %>
+          <%= f.file_field :user_image , class: "form-control-file", accept: 'image/*' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :ユーザーネーム %>
+          <%= f.text_field :name , class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :紹介文 %>
+          <%= f.text_area :introduction , class: 'form-control' %>
+        </div>
+        <div class="form-group col-7 mx-auto m-5">
+          <%= f.submit '更新する' ,class: 'btn btn-success btn-block' %>
+        </div>
+      <% end %>
+    </div>
 </div>

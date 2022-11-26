@@ -8,23 +8,31 @@
         <% end %>
       </div>
     <% end %>
-  </div>
-  <div class="pl-1">
+</div>
+<div class="pl-1">
     <div class="post_detail d-inline-block">
       <div class="favorite_btn_<%= post.id %>">
         <span><%= render 'favorites/favorite_btn' , post: post %></span>
       </div>
-        <li>タイトル:
-        <%= link_to post_path(post.id) , class: 'text-light' do %>
-          <%= post.title %>
-        <% end %>
+        <li>
+          <%= link_to post_path(post.id) , class: 'text-light h3' do %>
+            <%= post.title %>
+          <% end %>
         </li>
-        <li>説明文: <%= post.description %></li>
-        <li>キャンプ場名: <%= post.campsite_name %></li>
-        <li>住所: <%= post.campsite_address %></li>
-        道具:<% post.camp_tools.each do |tool| %>
-        <li><%= tool.tool_name %></li>
-        <% end %>
+        <li><%= post.description %></li>
+        <li>
+          <i class="fas fa-tent"></i>
+          :<%= post.campsite_name %>
+        </li>
+        <li class="d-flex align-items-center">
+          <i class="fas fa-location-pin h5 mr-2 mb-0"></i>
+          :<%= post.campsite_address %>
+        </li>
+        <li>
+          <% post.camp_tools.each do |tool| %>
+            <i class="fas fa-hammer"></i>:<%= tool.tool_name %><br>
+          <% end %>
+        </li>
         <li><%= l post.created_at %></li>
     </div>
 </div>

@@ -9,11 +9,12 @@ class User < ApplicationRecord
   has_many :posts , dependent: :destroy
   has_many :favorites , dependent: :destroy
   has_many :comments , dependent: :destroy
-
   has_many :relationships , class_name: "Relationship" , foreign_key: "follower_id" , dependent: :destroy
   has_many :reserve_of_relationships , class_name: "Relationship" , foreign_key: "followed_id" , dependent: :destroy
   has_many :followings , through: :relationships , source: :followed
   has_many :followers , through: :reserve_of_relationships , source: :follower
+
+  validates :name , presence: true , length: {maximum: 30} ,uniqueness: true
 
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
@@ -35,12 +36,8 @@ class User < ApplicationRecord
   end
 
   #検索分岐
-  def self.looks(searches, words)
-    if searches == "perfect_match"
-      @user = User.where("name LIKE ?", "#{words}")
-    else
-      @user = User.where("name LIKE ?", "%#{words}%")
-    end
+  def self.looks(words)
+    @user = User.where("name LIKE ?", "%#{words}%")
   end
 
 end

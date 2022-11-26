@@ -1,17 +1,26 @@
 <div class="container px-5">
-    <div class="row user_index border m-5">
-      <div class="col-8">
+    <div class="row user_index border m-5 shadow-lg">
+      <div class="col-7">
         <%= render 'users/show' , user: @user_post %>
       </div>
-      <div class="col-3">
+      <div class="col-5 pt-4">
         <%= render 'relationships/follow_number' , user: @user_post %>
-        <%= link_to 'プロフィールを編集' , edit_user_path , class: 'btn btn-sm btn-success' %>
-        <%= link_to  "いいねした投稿一覧" , favorites_user_path , class: 'btn btn-sm btn-warning' %>
+        <div class='d-inline-block mt-3 mr-3'><%= link_to 'プロフィールを編集' , edit_user_path , class: 'btn btn-sm btn-success' %></div>
+        <div class='d-inline-block mt-3'><%= link_to  "いいねした投稿一覧" , favorites_user_path , class: 'btn btn-sm btn-warning' %></div>
       </div>
     </div>
-    <% @post.each do |post| %>
-      <div class="row post_index border m-5">
-        <%= render 'posts/index' , post: post %>
+    <% if @post.count == 0 %>
+      <div class="row-12 h1 text-center mt-5">
+        投稿がありません。
       </div>
+    <% else %>
+      <% @post.each do |post| %>
+        <div class="row post_index border m-5 shadow-lg">
+          <%= render 'posts/index' , post: post %>
+        </div>
+      <% end %>
     <% end %>
+    <div class="paginate d-flex justify-content-center">
+      <%= paginate @post %>
+    </div>
 </div>

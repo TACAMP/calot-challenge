@@ -1,12 +1,25 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
+html {
+  height: 100%;
+}
+
 body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
   font-family: "M PLUS Rounded 1c";
 }
 
 header {
   background-image: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);
+}
+
+footer {
+  position: sticky;
+  top: 100vh;
+  width: 100%;
 }
 
 .post_index{
@@ -16,4 +29,33 @@ header {
 
 .user_index{
   background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+}
+
+/*ページネーション自体のデザイン*/
+.pagination>li>a {
+  border: none;     /*枠線をなくす*/
+  color: #696969;   /*文字の色を変える*/
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {
+  background-image: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);     /*背景の色を変える*/
+  border-radius: 15px;     /*角を丸くする*/
+}
+
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {
+  border-radius: 15px;    /*角を丸くする*/
+}
+
+.profile {
+  border-radius: 15px;
+}
+
+.user_index_image {
+  border-radius: 50px;
+}
+
+.title_name {
+  font-family: 'Zen Kurenaido', sans-serif;
 }

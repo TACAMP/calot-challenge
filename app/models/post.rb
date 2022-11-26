@@ -10,6 +10,9 @@ class Post < ApplicationRecord
   has_many:camp_tools ,dependent: :destroy
   accepts_nested_attributes_for :camp_tools , allow_destroy: true
 
+  validates :title , presence: true
+  validates :description , length: {maximum: 500}
+
   #Favoriteモデルにuserが存在するか確認
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
@@ -31,11 +34,8 @@ class Post < ApplicationRecord
   end
 
   #検索分岐
-  def self.looks(searches, words)
-    if searches == "perfect_match"
-      @post = Post.where("title LIKE ?", "#{words}")
-    else
-      @post = Post.where("title LIKE ?", "%#{words}%")
-    end
+  def self.looks(words)
+    @post = Post.where("title LIKE ?", "%#{words}%")
   end
+
 end

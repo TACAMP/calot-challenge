@@ -1,16 +1,14 @@
-<div class="col-md-8 p-0">
-  <%= link_to user_path(user.id) ,class: 'text-light text-decoration-none' do %>
+<span>
+  <%= link_to user_path(user.name) ,class: 'text-light text-decoration-none font-weight-bold h5' do %>
     <% if user.user_image.attached? %>
-      <%= image_tag user.user_image , size: "80x80" %>
+      <%= image_tag user.user_image , size: "120x120" , class: 'p-1' %>
     <% else %>
       <%= image_tag 'no_image_square.jpg' , size: "80x80" %>
     <% end %>
-    <%= user.name %>
+    <%= user.name  %><br>
   <% end %>
   <%= user.introduction %>
-</div>
-<div class="align-items-center">
-<div class= "follow_btn_<%= user.id %>">
-  <%= render 'relationships/follow_btn' , obj: user %>
-</div>
-</div>
+</span>
+<span class= "follow_btn_<%= user.id %> ml-2 d-flex align-items-center">
+    <%= render 'relationships/follow_btn' , obj: user %>
+</span>

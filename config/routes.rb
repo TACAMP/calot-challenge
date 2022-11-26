@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root "posts#index"
 
-  resources :users , only:[:show,:edit,:update] do
+  resources :users , param: :name , only:[:show,:edit,:update] do
     resource :relationships , only:[:create,:destroy] do
     get 'followings' => 'relationships#followings' , as: 'followings'
     get 'followers' => 'relationships#followers' , as: 'followers'
@@ -26,4 +26,5 @@ Rails.application.routes.draw do
   resources :tags
   resources :camp_tools
   get 'search' => 'searches#search'
+  get 'all_users_posts' => 'posts#all_users_posts' , as: 'all_users_posts'
 end

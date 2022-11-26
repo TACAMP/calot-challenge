@@ -17,4 +17,6 @@ class ApplicationController < ActionController::Base
     new_user_session_path
   end
 
+  add_flash_types :success, :info, :warning, :danger
+
 end
