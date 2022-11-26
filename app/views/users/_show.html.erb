@@ -1,4 +1,4 @@
-<div class="d-inline-block">
+<span>
   <%= link_to user_path(user.name) ,class: 'text-light text-decoration-none font-weight-bold h5' do %>
     <% if user.user_image.attached? %>
       <%= image_tag user.user_image , size: "120x120" , class: 'p-1' %>
@@ -8,9 +8,7 @@
     <%= user.name  %><br>
   <% end %>
   <%= user.introduction %>
-</div>
-<div class="d-inline-block">
-  <div class= "follow_btn_<%= user.id %> ml-2">
-      <%= render 'relationships/follow_btn' , obj: user %>
-  </div>
-</div>
+</span>
+<span class= "follow_btn_<%= user.id %> ml-2 d-flex align-items-center">
+    <%= render 'relationships/follow_btn' , obj: user %>
+</span>

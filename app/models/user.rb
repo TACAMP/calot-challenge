@@ -14,7 +14,7 @@ class User < ApplicationRecord
   has_many :followings , through: :relationships , source: :followed
   has_many :followers , through: :reserve_of_relationships , source: :follower
 
-  validates :name , length: {minimum: 2,maximum: 30} ,uniqueness: true
+  validates :name , presence: true , length: {maximum: 30} ,uniqueness: true
 
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|

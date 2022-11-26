@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user , only:[:favorites]
-  before_action :ensure_correct_user , only:[:edit,:update]
+  before_action :ensure_correct_user , only:[:edit]
 
   def show
     @user=User.where(id: params[:id])
@@ -15,9 +15,9 @@ class UsersController < ApplicationController
   def update
     @user=User.find_by(name: params[:name])
     if @user.update(user_params)
-      redirect_to user_path , success: 'ユーザー情報の編集に成功しました。'
+      redirect_to user_path(@user.name) , success: 'ユーザー情報の編集に成功しました。'
     else
-      render 'users/edit'
+      render :edit
     end
   end
 
