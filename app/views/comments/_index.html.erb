@@ -1,10 +1,10 @@
-<% post.comments.each do |comment| %>
+<% post.comments.each do |comment| %></br>
   <%= link_to user_path(comment.user) do %>
     <%= comment.user.name %>
   <% end %>
   <%= comment.comment %>
   <%= l comment.created_at %>
   <% if current_user.id == comment.user.id %>
-    <%= link_to '削除する' , post_comment_path(post,comment) , remote: true , method: :delete %><br>
+    <%= link_to '削除する' , post_comment_path(post,comment) , remote: true , method: :delete %>
   <% end %>
 <% end %>
