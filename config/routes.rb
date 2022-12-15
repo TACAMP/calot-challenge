@@ -18,13 +18,16 @@ Rails.application.routes.draw do
       get :favorites
     end
   end
+
   resources :posts do
     resource :favorites , only:[:create,:destroy]
     resources :comments , only:[:create,:destroy]
   end
+
   resources :post_tags
   resources :tags
   resources :camp_tools
+  resources :notifications , only:[:index]
   get 'search' => 'searches#search'
   get 'all_users_posts' => 'posts#all_users_posts' , as: 'all_users_posts'
 end

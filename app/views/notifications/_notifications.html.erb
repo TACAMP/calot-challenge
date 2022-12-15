@@ -1,0 +1,10 @@
+<% visitor = @notifications.visitor %>
+<div class="mx-auto">
+  <div class="form-inline">
+    <span>
+      <%= link_to user_path(notifications.visitor) do %>
+        <%= image_tag user_image(visitor).to_s ,class: 'icon-mini' %>
+      <% end %>
+    </span>
+  </div>
+</div>
