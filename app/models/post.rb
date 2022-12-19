@@ -41,13 +41,13 @@ class Post < ApplicationRecord
 
   def create_notification_favorites!(current_user)
     #すでにいいねされているか確認
-    temp = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = '?' ", current_user.id , user_id , id , 'like'])
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and post_id = ? and action = '?' ", current_user.id , user_id , id , 'Favorite'])
     #いいねされていない場合のみ、通知レコードを作成
     if temp.blank?
       notification = current_user.active_notifications.new(
         post_id: id ,
         visited_id: user_id ,
-        action: 'Like'
+        action: 'Favorite'
       )
       if notification.visitor_id == notification.visited_id
         notification.checked = true
