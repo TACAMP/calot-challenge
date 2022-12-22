@@ -5,10 +5,8 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     comment = current_user.comments.new(comment_params)
     comment.post_id = @post.id
-    unless comment.save
-      @post.create_notification_comment!(current_user , comment.id)
-      render 'comments/form'
-    end
+    comment.save
+    @post.create_notification_comment!(current_user , comment.id)
     @comment = Comment.new
   end
 

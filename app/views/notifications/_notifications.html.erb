@@ -1,10 +1,16 @@
-<% visitor = @notifications.visitor %>
-<div class="mx-auto">
-  <div class="form-inline">
-    <span>
-      <%= link_to user_path(notifications.visitor) do %>
-        <%= image_tag user_image(visitor).to_s ,class: 'icon-mini' %>
+<div class="container">
+  <div class="h1">通知</div>
+    <% notifications.each do |notification| %>
+      <% if notification.checked == false %>
+        <div class="row">
+          <%= link_to user_path(notification.visited) do %>
+            <% if notification.visited.user_image attached? %>
+              <%= image_tag notification.visited.user_image , size: "80x80" %>
+            <% else %>
+              <%= image_tag 'no_image_square.jpg' , size: "80x80" %>
+            <% end %>
+          <% end %>
+        </div>
       <% end %>
-    </span>
-  </div>
+    <% end %>
 </div>

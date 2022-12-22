@@ -16,7 +16,7 @@ class User < ApplicationRecord
   has_many :active_notifications , class_name: 'Notification' , foreign_key: 'visitor_id' , dependent: :destroy
   has_many :passive_notifications , class_name: 'Notification' , foreign_key: 'visited_id' , dependent: :destroy
 
-  validates :name , presence: true , length: {maximum: 30} ,uniqueness: true
+  validates :name , presence: true , length: {maximum: 30}
 
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
